@@ -1,7 +1,8 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
   background-color: #FFF;
+  font-family: 'Bellefair', serif;
   width: 100vw;
+  overflow-x: hidden;
 }

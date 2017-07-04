@@ -2,26 +2,24 @@ import React, { Component } from 'react';
 import {Col, Row, Image} from 'react-bootstrap';
 import {Tex} from 'react-tex';
 
-class Projects extends Component {
+class FeedForward extends Component {
     render() {
         return (
             <Row style={{textAlign: "justify"}}>
-                <Col xs={12} md={4}>
-                    <p style={{fontSize:"22px", fontWeight: "bold"}}> Feed-forward function in Artificial Neural Networks </p>
+                <Col xs={12} md={6} mdOffset={3}>
+                    <p style={{fontSize:"18px", fontWeight: "bold"}}> Feed-forward function in Artificial Neural Networks </p>
                     <p>
-                        In Feed-Forward Artificial Neural Networks (ANNs) we have the feed-forward function which takes in training data and returns an output within the range
+                        In Artificial Neural Networks (ANNs) we have the feed-forward function which takes in input data and returns an output within the range
                         our activation function. This article will focus on the feed forward function and will not look into the traning methods used in Neural Networks. 
                         The language used in examples will be Python used with Numpy package.
                     </p>
-                    <Image src={"http://i.imgur.com/hRkCA7b.png"} responsive />
+                    <Image src={"http://i.imgur.com/hRkCA7b.png"} width="300px" responsive />
                     <p>
                         A Neural Network is build up of multiple layers containing neurons. The first layer is called input layer, and the last layer is the output layer.
                         In-between the input and output layer we have hidden layers. In this article we will do feed-forward for the XOR binary operation. Therefore
                         our input layer will have two neurons and our output will have one neuron. Will also include one hidden layer with tree neurons. Connecting each neuron
                         in neighbouring layers we have synapses with weights. These weights will start with random values.
                     </p>
-                </Col>
-                <Col xs={12} md={4}>
                     <p>
                         Each neuron in the hidden and output layer have an input value and an output value. The input value is calculated based on parents neuron weight and output.
                         With the input calculated we can get the output by passing the input trought an activation function.
@@ -37,8 +35,7 @@ class Projects extends Component {
                     <p>
                         In the this example the training data input will be 0,1,1. E.g <Tex texContent="0 \oplus 1 = 1" />, we denote the input as X.
                         <br/><Tex texContent="X = \begin{bmatrix}
-                                                0  \\[0.3em]
-                                                1 
+                                                0 & 1
                                             \end{bmatrix}" />
                     </p>
                     <p>
@@ -58,8 +55,6 @@ class Projects extends Component {
                     <p>
                         We will do this for both <Tex texContent="W_1" /> and <Tex texContent="W_2" />.
                     </p>
-                </Col>
-                <Col xs={12} md={4}>
                     <p>
                         We are now ready to start propegating through the network, we have establish the input values X and generated random values for both weight matrices. Since the input
                         layer neurons have no weights their input will be their output. We therefore start by finding the input value for each neuron in the hidden layer; 
@@ -67,13 +62,12 @@ class Projects extends Component {
                     </p>
                     <p>
                         With our data structure we can calulate the input values for each hidden neuron with matrix operations. The input values for a layer will be denoted <Tex texContent="Z" />.
-                        By dot multiplying the output data and the weights we can calculate the <Tex texContent="Z" /> matrix (<Tex texContent="Z_i = W_iX" />).
+                        By dot multiplying the output data and the weights we can calculate the <Tex texContent="Z" /> matrix (<Tex texContent="Z_i = XW_{i-1}" />).
                     </p>
                     <p>
                         In our exampel we then get:
                         <br/><Tex texContent="Z = \begin{bmatrix}
-                                                0 \\[0.3em]
-                                                1
+                                                0 & 1
                                             \end{bmatrix} \times \begin{bmatrix}
                                                 -0.55 & -0.65 & -0.68  \\[0.3em]
                                                 0.63  & 0.54 & -1.22
@@ -87,7 +81,7 @@ class Projects extends Component {
                     </p>
                     <p>
                         We need each neuron output to confirm to an output range, for this task we will use an activation function. In this example we use the sigmoid function: 
-                        <br/><Tex texContent="f(x) = \frac{1}{1+e^{x-}}" />
+                        <br/><Tex texContent="f(z) = \frac{1}{1+e^{-z}}" />
                         The sigmoid function will output a number from 0 and 1. If we needed a wider range or negative outputs there is other activation functions availible.
                     </p>
                     <p>
@@ -107,4 +101,4 @@ class Projects extends Component {
     }
 }
 
-export default Projects;
+export default FeedForward;
